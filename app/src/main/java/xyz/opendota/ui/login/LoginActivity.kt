@@ -51,11 +51,13 @@ class LoginActivity : BaseActivity() {
             val loginResult = it ?: return@Observer
 
             loading.visibility = View.GONE
-            if (loginResult.error != null) {
-                showLoginFailed(loginResult.error)
-            }
-            if (loginResult.success != null) {
-                updateUiWithUser(loginResult.success)
+            if (!loginResult.ignore) {
+                if (loginResult.error != null) {
+                    showLoginFailed(loginResult.error)
+                }
+                if (loginResult.success != null) {
+                    updateUiWithUser(loginResult.success)
+                }
             }
         })
 
@@ -95,7 +97,6 @@ class LoginActivity : BaseActivity() {
     private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = getString(R.string.welcome)
         val displayName = model.displayName
-        // TODO : initiate successful logged in experience
         Toast.makeText(
             applicationContext,
             "$welcome $displayName",

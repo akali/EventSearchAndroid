@@ -48,7 +48,7 @@ class LoginViewModel(
                     _loginResult.value =
                         LoginResult(success = LoggedInUserView(displayName = result.data.username))
                 }, {
-                    _loginResult.value = LoginResult(error = "")
+                    _loginResult.value = LoginResult(ignore = true)
                 })
         )
     }

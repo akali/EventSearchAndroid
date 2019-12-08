@@ -5,5 +5,6 @@ package xyz.opendota.ui.login
  */
 data class LoginResult(
     val success: LoggedInUserView? = null,
-    val error: String? = null
+    val error: String? = null,
+    val ignore: Boolean = false
 )
